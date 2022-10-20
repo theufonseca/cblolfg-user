@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+
+  db:
+    image: mysql:5.7
+    command: --innodb-use-native-aio=0
+    container_name: mysql
+    restart: always
+    tty: true
+    volumes:
+      - c:\cblolfg\mysql-db:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=game
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=root
+      - MYSQL_ROOT_PASSWORD=root
+    networks:
+      - cblol-fantasy-game
+    ports:
+      - "33061:3306"
+
+networks:
+  cblol-fantasy-game:
+    driver: bridge
